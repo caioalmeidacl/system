@@ -1,48 +1,53 @@
-let usuario = {
-    login: 'caio', 
-    senha: '12345',
-    cargo: 'ADM'
-}
-
-let usuario2 = {
-    login: 'Diego',
-    senha: '1234', 
-    cargo: 'Usuário'
+let usuarios = {
+    'Caio':{ 
+        cargo: 'ADM',
+        senha: '12345'
+    },
+    'Diego': { 
+        cargo: 'Usuario',
+        senha: '1234'
+    }
 }
 
 // PRIMEIRA PAGINA
 function checkLogin(){ 
-    var campoLogin = document.getElementById("login-usuario").value
-    var campoSenha = document.getElementById("senha-usuario").value
-
-    if(campoLogin === usuario.login && campoSenha == usuario.senha) {
+    let campoLogin = document.getElementById("login-usuario").value
+    let campoSenha = document.getElementById("senha-usuario").value
+    let dadosLogin = usuarios[campoLogin]
+    
+    if(dadosLogin && campoSenha === dadosLogin.senha) {
+        localStorage.setItem('login', campoLogin)
+        localStorage.setItem('cargo', dadosLogin.cargo)
         window.location.href = "/sistema/autenticacao.html"
-    } else if(campoLogin === usuario2.login && campoSenha == usuario2.senha ) {
-        window.location.href = "/sistema/autenticacao.html"
-    }  else { 
-        document.getElementById("senha-usuario").value = ""
+    } else {
         alert('Login ou senha incorretos')
-    }
-    
-    
+    }   
+   
 }
 
+
 // Já autenticado
-document.addEventListener("DOMContentLoaded", function() {
+function updateUser() {
     let nameLogin = document.getElementById("nameLogin") 
     let cargo = document.getElementById("cargo")
 
-    nameLogin.textContent = usuario.login
-    cargo.textContent = usuario.cargo
-})
+    nameLogin.textContent =  localStorage.getItem('login')
+    cargo.textContent =  localStorage.getItem('cargo')
 
-document.addEventListener("DOMContentLoaded", function() {
-    let nameLogin = document.getElementById("nameLogin") 
-    let cargo = document.getElementById("cargo")
+}
 
-    nameLogin.textContent = usuario2.login
-    cargo.textContent = usuario2.cargo
-})
 
 // Area administrativa 
 
+function adm() {
+    let cargo = localStorage.getItem('cargo')
+
+    
+    if(cargo === 'Usuario') {
+        alert('Você não tem cargo para acessar')
+        window.location.href = "#"
+    } else if(cargo === 'ADM'){
+        window.location.href = "../sistema/adm.html"
+    }
+
+}

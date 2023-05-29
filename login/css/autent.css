@@ -37,6 +37,9 @@ main {
     text-decoration: none;
     color: rgb(4, 0, 255);
 }
+a:hover {
+    cursor: pointer;
+}
 
 .verticalbar {
     display: inline-block;
