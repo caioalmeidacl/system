@@ -8,7 +8,7 @@ body{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: sans-serif;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 main {
@@ -81,4 +81,49 @@ button:hover {
     color: white;
     cursor: pointer;
 }
+/* Celulares */
+@media(max-width: 500px) { 
+    main {
+        position: relative;
+        top: 180px;
+        left: 10px;
+        width: 95vw;
+        height: 50vh;
+    }
 
+    .top-login {
+        display: flex;
+        align-items: center;
+        /* border: 1px solid; */
+        margin: 15px 0;
+    }
+
+    .top-login h1 {
+        font-size: 27px;
+    }
+    .top-login img {
+        width: 10vw;
+    }
+
+    .inputs {
+        /* border: 1px solid; */
+        width: 90vw;
+        height: 20vh;
+    }
+
+    #login-usuario, #senha-usuario, #button {
+        margin: 5px 5px;
+    }
+
+    #button {
+        margin: 30px 5px;
+    }
+
+    .inputs input{
+        width: 98%;
+    }
+    .inputs button {
+        width: 98%;
+    }
+
+}
