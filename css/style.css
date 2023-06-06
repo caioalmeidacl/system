@@ -76,11 +76,41 @@ main {
     border-radius: 15px;
 }
 
-button:hover {
+.inputs button:hover {
     background-color: rgb(0, 110, 255);
     color: white;
     cursor: pointer;
 }
+
+aside {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    /* border: 1px solid black; */
+    left: 88%;
+    top: 1%;
+    width: 10%;
+}   
+
+#cadastro {
+    border-radius: 10px;
+    width: 100%;
+    font-weight: bold;
+    font-size: 1em;
+    text-align: center;
+    height: 6vh;
+    border: 1px solid rgb(0, 162, 255);
+    color: black;
+    background-color: white;
+}
+
+#cadastro:hover {
+    background-color: red;
+    color: white;
+    cursor: pointer;
+}
+
+
 /* Celulares */
 @media(max-width: 500px) { 
     main {
