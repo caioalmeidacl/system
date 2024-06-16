@@ -1,9 +1,9 @@
-let usuarios = {
+let users = {
     'Caio':{ 
         cargo: 'ADM',
         senha: '12345'
     },
-    'Diego': { 
+    'User2': { 
         cargo: 'Usuario',
         senha: '1234'
     }
@@ -12,22 +12,20 @@ let usuarios = {
 // PRIMEIRA PAGINA
 document.addEventListener("click", function() {
     function checkLogin(){ 
-        let campoLogin = document.getElementById("login-usuario").value
-        let campoSenha = document.getElementById("senha-usuario").value
-        let register = document.getElementById("cadastro")
-        let dadosLogin = usuarios[campoLogin]
+        let campoLogin = document.getElementById("login").value
+        let campoSenha = document.getElementById("password").value
+        let dadosLogin = users[campoLogin]
 
         if(dadosLogin){
             if(dadosLogin && campoSenha === dadosLogin.senha) {
                 localStorage.setItem('login', campoLogin)
                 localStorage.setItem('cargo', dadosLogin.cargo)
-                window.location.href = "/sistema/autenticacao.html"
+                window.location.href = "../pages/autenticacao.html"
             }  else {
                 alert('Login ou senha incorretos')
             }   
         } else { 
             alert('Usuário não existe')
-            register.hidden = false
         }
     }
     let verify = document.getElementById("button")
@@ -42,7 +40,6 @@ function updateUser() {
 
     nameLogin.textContent =  localStorage.getItem('login')
     cargo.textContent =  localStorage.getItem('cargo')
-
 }
 
 
@@ -52,10 +49,10 @@ document.addEventListener("click", function(){
         let cargo = localStorage.getItem('cargo')
         
         if(cargo === 'Usuario') {
-            alert('Você não tem cargo para acessar')
+            alert('You do not have the required access level')
             window.location.href = "#"
         } else if(cargo === 'ADM'){
-            window.location.href = "../sistema/adm.html"
+            window.location.href = "../pages/adm.html"
         }
     }
     let area = document.getElementById("adm")
@@ -66,15 +63,15 @@ document.addEventListener("click", function(){
 // Links
 document.addEventListener("click", function(){ 
     function getOut() {
-        window.location.href = '/index.html'
+        window.location.href = '../login.html'
     }
     
     function home() {
-        window.location.href = '/sistema/autenticacao.html'
+        window.location.href = '../pages/autenticacao.html'
     }
     
-    let leave = document.getElementById("leave")
-    leave.onclick = getOut
+    let goBack = document.getElementById("leave")
+    goBack.onclick = getOut
     
     let aut = document.getElementById("home")
     aut.onclick = home
